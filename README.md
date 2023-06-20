@@ -1,5 +1,5 @@
 # ebookLizenzOrganisation
-a website for the management of licenses to be distributed to registered users using html, datatables, javascript, php, phpmailer, sql
+a website for the management of licenses to be distributed to registered users using html, datatables, javascript, php, phpmailer, sql<br>
 language: German
 
 features:
