@@ -12,20 +12,20 @@ setup for use:
 - Use a webserver like Apache and a sql database
 - create database using CREATE_DB.sql from the repository
 - copy all files from the repository to the webserver
-- create a file infodat.ini and place it in the folder "php":
-  mailusername = "yourmailserverlogin"
-  mailpassword = "yourmailserverpassword"
-  mailhost = "yourmailserverdomain"
-  auth = "TRUE"
-  sec = "tls"
-  mailport = 25
-  dbhost = 127.0.0.1
-  db = "yourdatabasename"
-  dbusername = "yourdatabaseusername"
-  dbpassword = "yourdatabasepassword"
-  dbport =3306
+- create a file infodat.ini and place it in the folder "php":<br>
+  mailusername = "yourmailserverlogin"<br>
+  mailpassword = "yourmailserverpassword"<br>
+  mailhost = "yourmailserverdomain"<br>
+  auth = "TRUE"<br>
+  sec = "tls"<br>
+  mailport = 25<br>
+  dbhost = 127.0.0.1<br>
+  db = "yourdatabasename"<br>
+  dbusername = "yourdatabaseusername"<br>
+  dbpassword = "yourdatabasepassword"<br>
+  dbport =3306<br>
 - in the database change the existing entry of table "benutzer": enter your email-adress
-- open the website to register as Admin using yourdomain/Registrierung.php?name=youremailadress (for example: localhost/Registrierung.php?name=mymail@gmx.de)
-  You have to use "Verwalter" as admin-login, choose your own password.
-- Now you are ready to go!
+- open the website to register as Admin using yourdomain/Registrierung.php?name=youremailadress (for example: localhost/Registrierung.php?name=mymail@gmx.de)<br>
+  You have to use "Verwalter" as admin-login, choose your own password.<br>
+- Now you are ready to go!<br>
 - read Anleitung.docx to get started using the website (at the moment in German only)
