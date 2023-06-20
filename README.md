@@ -26,6 +26,6 @@ setup for use:
   dbport =3306<br>
 - in the database change the existing entry of table "benutzer": enter your email-adress
 - open the website to register as Admin using yourdomain/Registrierung.php?name=youremailadress (for example: localhost/Registrierung.php?name=mymail@gmx.de)<br>
-  You have to use "Verwalter" as admin-login, choose your own password.<br>
+  You have to use "Verwalter" as admin-login (!), choose your own password.<br>
 - Now you are ready to go!<br>
 - read Anleitung.docx to get started using the website (at the moment in German only)
