@@ -34,13 +34,13 @@ if ($aufrufvariable == "einladung") {
         $betreff = $schulname . ": Registrierung zur Code-Bestellung für ebooks";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
        
-        $text = $einladungstext.
+        $text = "<html>".$einladungstext.
         "<a href='https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo'>
         https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo
         </a><br>
         Mit freundlichen Grüßen,<br>
         i.A.<br>
-        $versender";
+        $versender</html>";
 
 $mail = new PHPMailer(TRUE);
  

@@ -58,7 +58,7 @@ $versender = $datensatzObjekt->Admin;
         $betreff =  $schulname . ": Rücksetzung ihres Passworts";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
        
-        $text = "Diese Mail wurde von der Anmeldeseite zur Code-Bestellung für ebooks verschickt.<br>
+        $text = "<html>Diese Mail wurde von der Anmeldeseite zur Code-Bestellung für ebooks verschickt.<br>
         Innerhalb der nächsten 15 Minuten können Sie Ihr Passwort neu vergeben.<br>
         Bitte verwenden Sie dafür folgenden Link:<br>
         <a href='
@@ -70,7 +70,7 @@ $versender = $datensatzObjekt->Admin;
         Mit freundlichen Grüßen,<br>
         i.A.<br>
         $versender <br>
-        $schulname
+        $schulname</html>
         ";
 
 $mail = new PHPMailer(TRUE);
