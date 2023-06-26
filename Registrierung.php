@@ -96,8 +96,9 @@ if ($checkEmail->num_rows == 0) {
             <script type="text/javascript" src="js/controllerAnmeldung.js"></script>
 
             <div id="gesetzliches" class="gesetzliches g-info">
-                <ul>| 
+            <ul>| 
                     <a id="Impressum" href="#">Impressum</a> | 
+                    <a href="https://gmg.amberg.de"><img src="css/images/GMGi.png" style="height: 1em;"></a> | 
                     <a id="Datenschutz" href="#">Datenschutz</a> |
                 </ul>
             </div>

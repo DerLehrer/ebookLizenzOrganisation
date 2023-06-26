@@ -121,8 +121,9 @@ setlocale(LC_ALL, "de_DE.UTF8");
         <div id="seitenid" style="display:none;">benutzerseite</div>
 
         <div id="gesetzliches" class="gesetzliches g-blau">
-                <ul>| 
+        <ul>| 
                     <a id="Impressum" href="#">Impressum</a> | 
+                    <a href="https://gmg.amberg.de"><img src="../css/images/GMGb.png" style="height: 1em;"></a> | 
                     <a id="Datenschutz" href="#">Datenschutz</a> |
                 </ul>
             </div>

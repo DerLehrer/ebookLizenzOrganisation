@@ -152,9 +152,10 @@ setlocale(LC_ALL, "de_DE.UTF8");
 </div>
 
 <div id="gesetzliches" class="gesetzliches g-gruen">
-                <ul class="g-gruen">| 
-                    <a id="Impressum" href="#" class="g-gruen">Impressum</a> | 
-                    <a id="Datenschutz" href="#" class="g-gruen">Datenschutz</a> |
+<ul class="g-gruen">|  
+                    <a id="Impressum" href="#">Impressum</a> | 
+                    <a href="https://gmg.amberg.de"><img src="../css/images/GMG.png" style="height: 1em;"></a> | 
+                    <a id="Datenschutz" href="#">Datenschutz</a> |
                 </ul>
 </div>
 
