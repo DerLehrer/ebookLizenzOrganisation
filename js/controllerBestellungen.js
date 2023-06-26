@@ -20,12 +20,12 @@ function loadtable(){
     dataType : "json",
     success: function( data ) {
       let kosten = 0.00;
-      str = '<table id="seitentabelle" class="table" style="width:100%"><thead><tr><th>Auswahl</th><th>Buch</th><th>Jahrgangsstufe</th><th>Titel</th><th>Autoren</th><th>Preis</th><th>Ihr Code</th></tr></thead><tbody>';
+      str = '<table id="seitentabelle" class="table" style="width:100%"><thead><tr><th>Auswahl</th><th>Buch</th><th>Jahrgangsstufe</th><th>Fach</th><th>Verlag</th><th>Preis</th><th>Ihr Code</th></tr></thead><tbody>';
        $.each(data, function (index, value) {
         let code = "-";
         if(value.Bestellt == '&nbsp;'){kosten = 1*kosten + 1*value.Preis}
         if(value.Code != null){code = value.Code;}
-        str = str + '<tr><td>'+value.Bestellt+'</td><td>'+value.Buch+'</td><td>'+value.Stufe+'</td><td>'+value.Titel+'</td><td>'+value.Autoren+'</td><td>'+value.Preis+' €</td><td>'+code+'</td>';
+        str = str + '<tr><td>'+value.Bestellt+'</td><td>'+value.Buch+'</td><td>'+value.Stufe+'</td><td>'+value.Fach+'</td><td>'+value.Verlag+'</td><td>'+value.Preis+' €</td><td>'+code+'</td>';
        })
        str = str + '</tbody></table>';
        $('#output').html(str);

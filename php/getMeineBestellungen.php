@@ -8,7 +8,7 @@ setlocale(LC_ALL,"de_DE.UTF8");
 
 $abfrager = $_SESSION['benutzerID'];
 
-$query = "SELECT IF(suba.bestellt>0, '&nbsp;', '') as Bestellt , buch.Buch, buch.Stufe, buch.Titel, buch.Autoren, buch.Preis, suba.Code
+$query = "SELECT IF(suba.bestellt>0, '&nbsp;', '') as Bestellt , buch.Buch, buch.Stufe, buch.Fach, buch.Verlag, buch.Preis, suba.Code
 				FROM buch left outer join (SELECT COUNT(Datum) AS bestellt, buchID, Code FROM bestellung WHERE BestellerID = '$abfrager' GROUP BY buchID) as suba
 				on buch.Buch = suba.buchID;";
 			

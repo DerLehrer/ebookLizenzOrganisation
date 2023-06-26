@@ -56,7 +56,7 @@ setlocale(LC_ALL, "de_DE.UTF8");
                             <div id="buttonleiste2" style="float: right; margin-right: 0px;"></div>
                     <tr>
                         <td class="zentriertesTab">
-                            <div id="output">&nbsp;</div>
+                        <div id="output">&nbsp;</div>
                         </td>
                     </tr>
                     </td>

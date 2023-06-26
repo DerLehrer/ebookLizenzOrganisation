@@ -6,7 +6,7 @@ $(document).ready(function() {
     success: function( data ) {
       str = '<table id="books" class="display"  style="width:100%"><thead><tr><th></th><th></th><th></th><th></th><th></th></thead><tbody>';
        $.each(data, function (index, value) {
-           str = str + '<tr><td>'+value.Id+'</td><td>'+value.Klasse+'</td><td>'+value.Titel+'</td><td>'+value.Autoren+'</td><td>'+value.Preis+'</td></tr>';
+           str = str + '<tr><td>'+value.Id+'</td><td>'+value.Klasse+'</td><td>'+value.Titel+'</td><td>'+value.Verlag+'</td><td>'+value.Preis+'</td></tr>';
        })
        str = str + '</tbody></table>';
        $('#output').html(str);

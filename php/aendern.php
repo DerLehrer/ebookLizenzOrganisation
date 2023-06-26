@@ -19,7 +19,7 @@ $tabelle = $auswahl[0];
 //Bucheintraege aendern
 
 if($tabelle=='buecher'){
-$abfrage = "UPDATE buch SET Buch = ?, Stufe =? ,  Titel = ?,  Autoren = ?, Preis = ?  WHERE Buch = ?";
+$abfrage = "UPDATE buch SET Buch = ?, Stufe =? ,  Fach = ?,  Verlag = ?, Preis = ?  WHERE Buch = ?";
 $stmt = $Datenbank->prepare($abfrage);
 $stmt->bind_param("sissds",$auswahl[2], $auswahl[3],$auswahl[4],$auswahl[5],$auswahl[6], $auswahl[1] );
 $stmt->execute();

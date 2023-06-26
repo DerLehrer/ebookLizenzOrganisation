@@ -46,14 +46,14 @@ function loadtable(){
     url: "../php/getBuecher.php",
     dataType : "json",
     success: function( data ) {
-      str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>ID</th><th>Jahrgangsstufe</th><th>Titel</th><th>Autoren</th><th>Preis</th><th>Bestellungen</th><th>Codes</th></tr></thead><tbody>';
+      str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>ID</th><th>Jahrgangsstufe</th><th>Fach</th><th>Verlag</th><th>Preis</th><th>Bestellungen</th><th>Codes</th></tr></thead><tbody>';
        $.each(data, function (index, value) {
         let anzahl = value.Codes;
         if(value.Anzahl_max > value.Codes){
           anzahl = value.Anzahl_max;
         }
        //editierbare Felder müssen class = "editable" eingestellt werden
-       str = str + '<tr><td></td><td>'+value.Buch+'</td><td>'+value.Stufe+'</td><td>'+value.Titel+'</td><td>'+value.Autoren+'</td><td class = "editable">'+value.Preis+'</td><td>'+value.Bestellungen+'</td><td>'+anzahl+'</td>';
+       str = str + '<tr><td></td><td>'+value.Buch+'</td><td>'+value.Stufe+'</td><td>'+value.Fach+'</td><td>'+value.Verlag+'</td><td class = "editable">'+value.Preis+'</td><td>'+value.Bestellungen+'</td><td>'+anzahl+'</td>';
        })
        str = str + '</tbody></table>';
        $('#output').html(str);
