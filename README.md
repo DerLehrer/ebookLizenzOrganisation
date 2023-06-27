@@ -30,3 +30,6 @@ setup for use:
   You have to use "Verwalter" as admin-login (!), choose your own password.<br>
 - Now you are ready to go!<br>
 - read Anleitung.docx to get started using the website (at the moment in German only)
+
+getting an overview
+- have a look at GraphicOverview.pdf

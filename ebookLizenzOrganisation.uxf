@@ -1,0 +1,276 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><element><id>UMLClass</id><coordinates><x>204</x><y>282</y><w>90</w><h>36</h></coordinates><panel_attributes>userarea
+group=group-6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>138</y><w>90</w><h>60</h></coordinates><panel_attributes>login
+
+group=group-3</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>354</y><w>90</w><h>48</h></coordinates><panel_attributes>adminarea
+
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>660</x><y>276</y><w>60</w><h>48</h></coordinates><panel_attributes>customelement=
+// Text Elemnt
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(0,(height+0.5)/5,width,(height)*3/5-1) fg=#929292 bg=#222222 //Parameters (x, y, width, height)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2) 
+drawArc(0,height*1/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*2/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+group=group-7</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>354</x><y>282</y><w>60</w><h>24</h></coordinates><panel_attributes>//right rectangle with double dashed border
+controller
+Bestellungen
+customelement=
+drawRectangleRound(0,0,100,40,5) fg=black bg=yellow lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>354</x><y>360</y><w>60</w><h>24</h></coordinates><panel_attributes>//right rectangle with double dashed border
+controller
+Verwaltung
+customelement=
+drawRectangleRound(0,0,100,40,5) fg=black bg=yellow lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>114</y><w>60</w><h>24</h></coordinates><panel_attributes>//right rectangle with double dashed border
+controller
+Anmeldung
+customelement=
+drawRectangleRound(0,0,100,40,5) fg=black bg=yellow lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>126</y><w>84</w><h>42</h></coordinates><panel_attributes>lt=&lt;..&gt;</panel_attributes><additional_attributes>10;50;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>288</y><w>78</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>366</y><w>78</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>252</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getMeineBestellungen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>174</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+anmelden
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>648</x><y>246</y><w>90</w><h>90</h></coordinates><panel_attributes>//right rectangle with double dashed border
+db_zugriff
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-7</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>402</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+buch
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>426</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+codes
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>450</y><w>90</w><h>42</h></coordinates><panel_attributes>//right rectangle with double dashed border
+einstellungen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>300</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+bestellseite
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-6</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>174</x><y>84</y><w>210</w><h>222</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;350;10;350;10;10;330;10;330;50</additional_attributes></element><element><id>Relation</id><coordinates><x>144</x><y>72</y><w>258</w><h>300</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>100;480;10;480;10;10;410;10;410;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>378</y><w>90</w><h>90</h></coordinates><panel_attributes>//right rectangle with double dashed border
+nutzer
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>156</y><w>90</w><h>18</h></coordinates><panel_attributes>Anmeldung
+bg=orange
+
+
+
+
+group=group-3</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>180</y><w>90</w><h>18</h></coordinates><panel_attributes>index
+bg=orange
+
+
+
+
+group=group-3</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>408</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getBestellungen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>360</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getNutzer
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>384</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getBuecher
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>432</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getCodes
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>276</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getZustaendigen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>408</x><y>288</y><w>60</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=orange</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>576</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+schuljahrloeschen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>480</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+sendmail
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>150</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+pwreset
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>102</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+registrieren
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>102</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+Registrierung
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>504</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+codesZuordnen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>126</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+checkOneTimePW
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>300</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+bestellungNutzer
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>552</x><y>282</y><w>108</w><h>24</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=blue
+</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>108</y><w>84</w><h>24</h></coordinates><panel_attributes>lt=&lt;..&gt;</panel_attributes><additional_attributes>10;10;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>414</x><y>120</y><w>54</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=orange</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>528</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+aendern
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>552</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+backup
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>600</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+dateiInDB
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>216</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+abmelden
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>204</x><y>474</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+bestellungen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+
+group=group-4</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>456</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+getEinstellungen
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>222</y><w>18</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=pink</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>216</y><w>36</w><h>12</h></coordinates><panel_attributes>infodat
+bg=pink
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>600</y><w>36</w><h>12</h></coordinates><panel_attributes>*.csv
+bg=gray
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>246</x><y>192</y><w>18</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>246</x><y>114</y><w>18</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>90</y><w>102</w><h>108</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>552</x><y>162</y><w>108</w><h>126</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=blue
+</panel_attributes><additional_attributes>10;10;160;190</additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>246</y><w>102</w><h>78</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>456</x><y>354</y><w>102</w><h>270</h></coordinates><panel_attributes></panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>246</y><w>66</w><h>24</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=blue
+
+group=group-9</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>Relation</id><coordinates><x>408</x><y>366</y><w>60</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=orange</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>600</y><w>54</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=pink</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>246</x><y>228</y><w>18</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>162</x><y>210</y><w>102</w><h>156</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;20;40;20;30;10;10;20;10;220;150;220;150;240</additional_attributes></element><element><id>UMLClass</id><coordinates><x>336</x><y>30</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+sessionn
+customelement=
+drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>30</y><w>360</w><h>432</h></coordinates><panel_attributes>lt=&lt;.&gt;
+fg=pink</panel_attributes><additional_attributes>10;10;580;10;570;700;230;700</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>30</y><w>228</w><h>354</h></coordinates><panel_attributes>lt=&lt;.&gt;
+fg=pink</panel_attributes><additional_attributes>360;10;10;10;10;570;140;570</additional_attributes></element><element><id>Relation</id><coordinates><x>132</x><y>42</y><w>216</w><h>276</h></coordinates><panel_attributes>lt=&lt;.&gt;
+fg=pink</panel_attributes><additional_attributes>340;10;10;10;10;440;120;440</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>36</y><w>192</w><h>246</h></coordinates><panel_attributes>lt=&lt;.&gt;
+fg=pink</panel_attributes><additional_attributes>10;10;300;10;300;390;230;390</additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>216</y><w>66</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;
+group=group-9</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>234</y><w>66</w><h>18</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=orange
+group=group-9</panel_attributes><additional_attributes>10;10;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>558</x><y>318</y><w>102</w><h>114</h></coordinates><panel_attributes>lt=&lt;..&gt;
+fg=blue
+</panel_attributes><additional_attributes>10;170;150;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>858</x><y>72</y><w>60</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+customelement=
+drawRectangleRound(0,0,100,30,5) fg=black bg=cyan lt=:
+
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>858</x><y>120</y><w>60</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+customelement=
+drawRectangleRound(0,0,100,30,5) fg=black bg=yellow lt=:
+
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>858</x><y>96</y><w>60</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
+customelement=
+drawRectangleRound(0,0,100,30,5) fg=black bg=orange lt=:
+
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>162</y><w>36</w><h>12</h></coordinates><panel_attributes>*.csv
+bg=gray
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>858</x><y>288</y><w>54</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-
+fg=pink
+group=group-10</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>144</y><w>36</w><h>12</h></coordinates><panel_attributes>
+bg=pink
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>198</y><w>66</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+group=group-9</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>306</y><w>60</w><h>18</h></coordinates><panel_attributes>lt=&lt;.&gt;
+fg=pink
+group=group-10</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>924</x><y>72</y><w>60</w><h>42</h></coordinates><panel_attributes>php-file
+
+
+html-file
+
+
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>924</x><y>120</y><w>60</w><h>18</h></coordinates><panel_attributes>js-file
+
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>924</x><y>144</y><w>60</w><h>42</h></coordinates><panel_attributes>ini-file 
+
+csv-file selected by user
+
+
+
+
+
+group=group-8</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>924</x><y>198</y><w>60</w><h>72</h></coordinates><panel_attributes>html
+
+javascript
+
+ajax
+
+sql
+
+
+
+group=group-9</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>924</x><y>288</y><w>60</w><h>18</h></coordinates><panel_attributes>php (Import)
+group=group-10</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>924</x><y>306</y><w>90</w><h>18</h></coordinates><panel_attributes>php (session-control)
+group=group-10</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>828</x><y>42</y><w>192</w><h>300</h></coordinates><panel_attributes>Note..
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
