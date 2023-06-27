@@ -13,6 +13,7 @@ setup for use:
 - create database using CREATE_DB.sql from the repository
 - copy all files from the repository to the webserver
 - create a file infodat.ini and place it in the folder "php":<br>
+  mailversandadresse ="yourfrommailadress"<br>
   mailusername = "yourmailserverlogin"<br>
   mailpassword = "yourmailserverpassword"<br>
   mailhost = "yourmailserverdomain"<br>

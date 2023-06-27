@@ -17,12 +17,13 @@ $constants = parse_ini_file("infodat.ini");
 
 $aufrufvariable = "einladung";
 
-$abfrage = $Datenbank->query("SELECT schulname, Admin, Email, Einladung FROM schuldaten");
+$abfrage = $Datenbank->query("SELECT schulname, Admin, Einladung FROM schuldaten");
 $datensatzObjekt = $abfrage->fetch_object();
 $schulname = $datensatzObjekt->schulname;
-$schulmail = $datensatzObjekt->Email;
 $versender = $datensatzObjekt->Admin;
 $einladungstext = $datensatzObjekt->Einladung;
+
+$versandadresse = $constants['mailversandadresse'];
 
 $zaehler = 0;
 
@@ -44,7 +45,7 @@ if ($aufrufvariable == "einladung") {
 
 $mail = new PHPMailer(TRUE);
  
-$mail->setFrom($schulmail, $versender);
+$mail->setFrom($versandadresse, $versender);
 $mail->addAddress($sendItTo);
 $mail->Subject = $betreff;
 $mail->Body = $text;

@@ -69,7 +69,7 @@ if ($checkEmail->num_rows == 0) {
                     <tr>
                     <td class="zentriertesTab" ><table style="width:350px;  margin: 0 auto;"><tr><td>
                         <td style="vertical-align:top"><input   type="checkbox" class ="regcheckbox" id="annahme"></td>
-                        <td style=" padding: 3px"><div class="zustimmung" id="zustimmungstext">Ich habe die <a href = "Datenschutzerklaerung_i.html">Datenschutzerkl&auml;rung</a> gelesen, kenne meine Rechte und stimme der Verarbeitung meiner Daten zum Zweck der Abwicklung der gemeinsamen Bestellung von ebook-Lizenzen zu.</div></td>
+                        <td style=" padding: 3px"><div class="zustimmung" id="zustimmungstext">Ich habe die <a href = "datenschutzerklaerung_i.html">Datenschutzerkl&auml;rung</a> gelesen, kenne meine Rechte und stimme der Verarbeitung meiner Daten zum Zweck der Abwicklung der gemeinsamen Bestellung von ebook-Lizenzen zu.</div></td>
 </td></tr></table>
                     </tr>
                     <tr>
@@ -81,7 +81,7 @@ if ($checkEmail->num_rows == 0) {
                         </td>
                     </tr>
                 </table>
-            </div>
+                </div> </div>
 
             <!--Übergabe der Email an JS -  optimierbar ?? -->
             <div id="anmelder" hidden>

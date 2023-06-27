@@ -22,8 +22,9 @@ trim($lN);
 $abfrage = $Datenbank->query("SELECT Schulname, Admin, Email FROM schuldaten");
 $datensatzObjekt = $abfrage->fetch_object();
 $schulname = $datensatzObjekt->Schulname;
-$schulmail = $datensatzObjekt->Email;
 $versender = $datensatzObjekt->Admin;
+
+$versandadresse = $constants['mailversandadresse'];
 
 /* Erstelle ein Einmalpasswort und ergänze dies beim Nutzer*/
 
@@ -75,7 +76,7 @@ $versender = $datensatzObjekt->Admin;
 
 $mail = new PHPMailer(TRUE);
  
-$mail->setFrom($schulmail, $versender);
+$mail->setFrom($versandadresse, $versender);
 $mail->addAddress($sendItTo);
 $mail->Subject = $betreff;
 $mail->Body = $text;
