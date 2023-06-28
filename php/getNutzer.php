@@ -8,8 +8,10 @@ if($_SESSION["benutzer"]=="Verwalter"){
 
 setlocale(LC_ALL,"de_DE.UTF8");
 
-$queryzwei = "SELECT Email, SchuelerVname, SchuelerNname, Klasse, Gesetzt, Eingeladen FROM benutzer WHERE Name NOT LIKE 'Verwalter'";
-			
+$queryzwei = "SELECT benutzer.Email, benutzer.SchuelerVname, benutzer.SchuelerNname, benutzer.Klasse, benutzer.Gesetzt, benutzer.Eingeladen, suba.Kosten FROM benutzer 
+LEFT OUTER JOIN (SELECT sum(buch.Preis) AS Kosten, bestellung.bestellerID AS nutzer FROM bestellung, buch WHERE buchID = buch.Buch GROUP BY bestellerID) AS suba
+ON benutzer.Email = suba.nutzer WHERE benutzer.Name NOT LIKE 'Verwalter' ;";
+
 	$abfrageergebnis = mysqli_query($Datenbank,$queryzwei);
 	$arr = array();
 	while($r = mysqli_fetch_object($abfrageergebnis)) {

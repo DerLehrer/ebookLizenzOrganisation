@@ -94,7 +94,7 @@ function loadtable(){
       success: function( data ) {
         let anzahl = 0;
         let eingeladene = 0;
-        str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Email-Adresse</th><th>Sch&uuml;ler</th><th>Klasse</th><th>eingeladen</th><th>hat sich registriert</th></tr></thead><tbody>';
+        str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Email-Adresse</th><th>Sch&uuml;ler</th><th>Klasse</th><th>eingeladen</th><th>hat sich registriert</th><th>Bestellkosten</th></tr></thead><tbody>';
          $.each(data, function (index, value) {
           let reg = "nicht registriert";
           let ein = "Nein";
@@ -102,7 +102,7 @@ function loadtable(){
           if(value.Gesetzt==1){reg="registriert"}
           if(value.Eingeladen==1){ein = "Ja"; eingeladene++;}
           //editierbare Felder müssen class = "editable" eingestellt werden
-          str = str + '<tr><td></td><td name = "mail" class = "editable">'+value.Email+'</td><td name = "vorname" class="editable">'+value.SchuelerVname+' '+value.SchuelerNname+'</td><td id=3 class = "editable">'+value.Klasse+'</td><td id=4 class = "editable">'+ein+'</td><td id=5>'+reg+'</td>';
+          str = str + '<tr><td></td><td name = "mail" class = "editable">'+value.Email+'</td><td name = "vorname" class="editable">'+value.SchuelerVname+' '+value.SchuelerNname+'</td><td id=3 class = "editable">'+value.Klasse+'</td><td id=4 class = "editable">'+ein+'</td><td id=5>'+reg+'</td><td id=6>'+value.Kosten+'</td>';
          })
          str = str + '</tbody></table>';
          hinw = ''+eingeladene+' von ' +anzahl+ ' Nutzern wurden eingeladen<p>';
