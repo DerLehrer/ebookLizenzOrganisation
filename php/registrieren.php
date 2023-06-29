@@ -5,6 +5,7 @@
     if($_POST){
    $rN = trim($_POST["aN"]);     //AnmelderName
    $eM = trim($_POST["eM"]);     //Anmelder-Email
+   $renPW = trim($_POST["otpw"]);     //OneTimePW
 
     $stmt = $Datenbank->prepare("SELECT Name FROM benutzer WHERE Name like ? OR Email like ?");
     $stmt->bind_param("ss", $rN, $rN);
@@ -17,8 +18,8 @@
         $options = [ 'cost' => 12 ];
         $hash = password_hash($_POST["pW"], PASSWORD_BCRYPT, $options);
 
-        $stmt = $Datenbank->prepare("UPDATE benutzer SET Name =  ?, Hashcode = ?, Gesetzt = 1, Renew = 0, RenewPW = NULL WHERE Email like  ?");
-        $stmt->bind_param("sss", $rN, $hash, $eM);
+        $stmt = $Datenbank->prepare("UPDATE benutzer SET Name =  ?, Hashcode = ?, Gesetzt = 1, Renew = 0, RenewPW = NULL WHERE Email like ? AND RenewPW = ?");
+        $stmt->bind_param("ssss", $rN, $hash, $eM, $renPW);
         $stmt->execute();
         $stmt->close();
    
@@ -31,7 +32,7 @@
           echo (1);
             }
         else {
-            echo (-1);                      /* Eintrag nicht erfolgreich wegen DB-Fehler*/
+            echo (-1);                      /* Eintrag nicht erfolgreich wegen DB-Fehler oder falschem OneTimePW*/
         }
     } else {
         echo (9999);                        /* Eintrag nicht erfolgreich, da Name schon vorhanden */

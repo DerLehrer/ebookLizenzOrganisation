@@ -296,7 +296,7 @@ function einladen(){
       var table = $("#seitentabelle").DataTable();   
   $.ajax({
     type: "GET",
-    url: "sendmail.php",
+    url: "einladen.php",
     cache: false,
     dataType : "json",
     error: function (xhr, ajaxOptions, thrownError) {

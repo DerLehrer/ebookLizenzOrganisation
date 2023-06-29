@@ -138,7 +138,7 @@ function checkBenutzername() {
 //////Registrieren //////
 
 function hashIt(){
-         checkBenutzername();
+        checkBenutzername();
         checkPasswordStrength();
         if($("#pwOK").text()==1 && $("#loginOK").text()==1){
             if($("#annahme").prop("checked")!=true){
@@ -151,7 +151,10 @@ function hashIt(){
         data: { aN: $("#loginName").val(),
                 pW: $("#Passwort").val(),
                 //pW: hashWert,
-                eM: $("#anmelder").text()},
+                eM: $("#anmelder").text(),
+                otpw: $("#ePw").text()
+        },
+        dataType: "json",
         success: function(data) {
         if(data==9999) {
         $("#hinweiseBenutzername").text("Der Benutzername "+$("#loginName").val()+" ist bereits vergeben." );
@@ -171,6 +174,8 @@ function hashIt(){
 ///////////////PW zuruecksetzen /////////////////
 
 function setNeu(){
+    checkPasswordStrength();
+    if($("#pwOK").text()==1){
     //alert($("#anmelder").text() +"->"+$("#Passwort").val()+"->"+ $("#ePw").text());
     $.ajax({
         type: "POST",
@@ -192,6 +197,7 @@ function setNeu(){
                  }
         }
     })
+}
 }
 
 

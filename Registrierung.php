@@ -6,8 +6,11 @@ require("php/db_zugriff.php");
 setlocale(LC_ALL, "de_DE.UTF8");
 
 $anmelder = "";
+$ePw = "";
 if ($_GET) {
     $anmelder = htmlspecialchars($_GET["name"]);
+    $ePw = $_GET["ePw"];
+
 } /* name wird nur genutzt, wenn auch etwas übergeben wurde */
 
 $stmt = $Datenbank->prepare("SELECT email FROM benutzer WHERE Email LIKE ? AND (Gesetzt != 1 OR Renew-TIME(NOW())> 0);");
@@ -84,8 +87,11 @@ if ($checkEmail->num_rows == 0) {
                 </div> </div>
 
             <!--Übergabe der Email an JS -  optimierbar ?? -->
-            <div id="anmelder" hidden>
+          <div id="anmelder" hidden>
                 <?php echo ($anmelder); ?>
+            </div>
+            <div id="ePw" hidden>
+                <?php echo ($ePw); ?>
             </div>
            
 

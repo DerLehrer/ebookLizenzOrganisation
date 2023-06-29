@@ -28,16 +28,17 @@ $versandadresse = $constants['mailversandadresse'];
 $zaehler = 0;
 
 if ($aufrufvariable == "einladung") {
-    $abf = $Datenbank->query("SELECT Email, Eingeladen FROM benutzer WHERE Name NOT LIKE 'Verwalter' AND Gesetzt < 1");
+    $abf = $Datenbank->query("SELECT Email, RenewPW, Eingeladen FROM benutzer WHERE Name NOT LIKE 'Verwalter' AND Gesetzt < 1");
     while ($zaehler <= 40 && $datensatz = $abf->fetch_assoc()) {
         if($datensatz['Eingeladen'] == 0){
         $sendItTo = $datensatz['Email'];
+        $otpw = $datensatz['RenewPW'];
         $betreff = $schulname . ": Registrierung zur Code-Bestellung für ebooks";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
        
         $text = "<html>".$einladungstext.
         "<a href='https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo'>
-        https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo
+        https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo&ePw=$otpw
         </a><br>
         Mit freundlichen Grüßen,<br>
         i.A.<br>

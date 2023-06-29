@@ -18,7 +18,7 @@ $bucharr = array();                          //fuer Pruefung, ob Buch vorhanden,
 $leerbleibendeSpalten;                       //muessen hinten sein!
 
 if($tabelle=='buecher'){$tabellenname = 'buch'; $leerbleibendeSpalten = 0;}             
-else if($tabelle=='nutzer'){$tabellenname = 'benutzer';  $leerbleibendeSpalten = 5;}    
+else if($tabelle=='nutzer'){$tabellenname = 'benutzer';  $leerbleibendeSpalten = 4;}    
 else if($tabelle=='codes'){
     $tabellenname = 'codes';  
     $leerbleibendeSpalten = 2;
@@ -57,7 +57,7 @@ $inhalt = file($_FILES['zeugs']['tmp_name'][$i]);
 
 //Prüft, ob die Spaltenzahl korrekt ist /////////////////////////////////////////////////////////////////////
  $arrZeile = explode($separator, $inhalt[0]);
-if(($tabellenname != "benutzer" && sizeof($arrZeile)!=$anzahlSpalten) || ($tabellenname == "benutzer" && sizeof($arrZeile)!=$anzahlSpalten-1)){
+if(($tabellenname != "benutzer" && sizeof($arrZeile)!=$anzahlSpalten) || ($tabellenname == "benutzer" && sizeof($arrZeile)!=$anzahlSpalten-2)){
     echo json_encode("_8888_");
     exit;
 }
@@ -73,7 +73,7 @@ $fragezeichen ="";
 // berücksichtige Auto-Increment in Benutzer- und Buch-Tabelle (entfaellt)
 $i = 0;
 $durchlauf = $anzahlSpalten;
-//if($tabellenname == "benutzer" || $tabellenname == "buch"){$i++; $durchlauf++;}         //Id-Spalte vorneweg
+//if($tabellenname == "benutzer"){$i++; $durchlauf++;}         //Id-Spalte vorneweg
 
 // nutze nur Prepared-Statements um Schadcode abzufangen
 
@@ -124,15 +124,41 @@ for($i=1;$i < count($inhalt); $i++){                    // Beginne mit 1, da ers
      $stmt->execute();
     }
 
-    if(($tabellenname == "codes" && in_array($arrZeile[0], $bucharr)) || $tabellenname == "benutzer"){       
+    if($tabellenname == "codes" && in_array($arrZeile[0], $bucharr)){       
     $query = "INSERT IGNORE INTO ".$tabellenname."($intospaltentext) VALUES ($fragezeichen);";
     $paramets = array();
     $position = 0;
     for($az=0;$az < $anzahlSpalten; $az++){
-        if($tabellenname == "benutzer" && $az==1){               //Sonderfall: Name muss als leerer Text eingetragen sein 
+        $paramets[] = trim($arrZeile[$position]);
+            $position++;
+            }   
+        $parametsString = implode(", ", $paramets);
+
+     $stmt = $Datenbank->prepare($query);
+     $types = str_repeat('s', count($paramets));
+     $stmt->bind_param($types, ...$paramets);
+     $stmt->execute();
+    }
+
+if($tabellenname =="benutzer"){
+    $query = "INSERT IGNORE INTO ".$tabellenname."($intospaltentext) VALUES ($fragezeichen);";
+    $paramets = array();
+    $position = 0;
+    for($az=0;$az < $anzahlSpalten; $az++){
+        if($az==1){                                      //Sonderfall: Name muss als leerer Text eingetragen sein 
                 $paramets[] = "";
         }
-        else 
+        if($az==5){                                     /*Einmalpasswort erstellen */
+            $laenge = rand(20,24);
+            $temporaeresPW ="";
+            $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!*,;+-_()[]:";
+            $var_size = strlen($chars);
+            for( $x = 0; $x < $laenge; $x++ ) {  
+                $temporaeresPW= $temporaeresPW.$chars[ rand( 0, $var_size - 1 ) ];
+            }
+            $paramets[] = $temporaeresPW;
+        }
+        if($az!=5 && $az!=1)
         {
             $paramets[] = trim($arrZeile[$position]);
             $position++;
@@ -145,9 +171,10 @@ for($i=1;$i < count($inhalt); $i++){                    // Beginne mit 1, da ers
      $stmt->bind_param($types, ...$paramets);
      $stmt->execute();
     }
-    
+
 }
 }
+
 
 //neue Einträge ermitteln //////////////////////////////////////////////////////////////////////////
 $abfrage = $Datenbank->query("SELECT count(*) as Anzahl FROM ".$tabellenname.";");
