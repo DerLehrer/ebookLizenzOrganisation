@@ -136,7 +136,8 @@ function loadtable(){
       success: function( data ) {
         str = '<table class="etable" id="einstellungstabelle"><tbody>';
         $.each(data, function (index, value) {
-        str = str + '<tr><td >Schulname</td><td><input class ="einput" type="text" id="inE1" value="'+value.Schulname+'"></input></td></tr><tr><td>Direktor</td><td><input class ="einput" type="text" id="inE2" value="'+value.Direktor+'"></input></td></tr><tr><td>Strasse</td><td><input class ="einput"  type="text"  id="inE3" value="'+value.Strasse+'"></input></td></tr>        <tr><td>PLZ</td><td><input class ="einput"  type="text" id="inE4" value="'+value.PLZ+'"></input></td></tr>        <tr><td>Ort</td><td><input class ="einput" type="text" id="inE5" value="'+value.Ort+'"></input></td></tr>        <tr><td>Verwalter</td><td><input class ="einput" type="text"  id="inE6" value="'+value.Admin+'"></input></td></tr>        <tr><td>Verwalter-Email</td><td><input class ="einput" type="text" id="inE7" value="'+value.Email+'"></input></td></tr><tr><td>Einladungstext</td><td ><div class ="einput" style="color:darkgrey; font-size:0.9em"><textarea class ="einput" id="inE8" type="text"  rows="6">'+value.Einladung+'</textarea><br>[individueller Link]<br>Mit freundlichen Grüßen,<br>i.A.<br>'+value.Admin+'</div></td></tr>';
+          let sperrdatum = ""
+        str = str + '<tr><td >Bestellende</td><td><input class ="einput"  type="date" id="inE1" value="'+value.Sperre+'"></input></td></tr><tr><td >Schulname</td><td><input class ="einput" type="text" id="inE2" value="'+value.Schulname+'"></input></td></tr><tr><td>Direktor</td><td><input class ="einput" type="text" id="inE3" value="'+value.Direktor+'"></input></td></tr><tr><td>Strasse</td><td><input class ="einput"  type="text"  id="inE4" value="'+value.Strasse+'"></input></td></tr>        <tr><td>PLZ</td><td><input class ="einput"  type="text" id="inE5" value="'+value.PLZ+'"></input></td></tr>        <tr><td>Ort</td><td><input class ="einput" type="text" id="inE6" value="'+value.Ort+'"></input></td></tr>        <tr><td>Verwalter</td><td><input class ="einput" type="text"  id="inE7" value="'+value.Admin+'"></input></td></tr>        <tr><td>Verwalter-Email</td><td><input class ="einput" type="text" id="inE8" value="'+value.Email+'"></input></td></tr><tr><td>Einladungstext</td><td ><div class ="einput" style="color:darkgrey; font-size:0.9em"><textarea class ="einput" id="inE9" type="text"  rows="6">'+value.Einladung+'</textarea><br>[individueller Link]<br>Mit freundlichen Grüßen,<br>i.A.<br>'+value.Admin+'</div></td></tr>';
        }) 
        str = str + '<tr><td></td><td style="text-align:center"><button class="btn btn-secondary" onclick="einstellungenSpeichern()">Einstellungen speichern</button>&nbsp;<button class="btn btn-secondary" onclick="sichern()"">Daten<br>sichern</button>&nbsp;<button class="btn btn-mainaction" onclick="zuruecksetzenSJ()">Datenspeicher zurücksetzen</button></td></tr>'
         str = str + '</tbody></table>';
@@ -346,7 +347,7 @@ function sichern(){
 function einstellungenSpeichern(){
   var updateDaten = [];
 updateDaten[0]=$('#seitenid').text();
-for(var i=1; i<9;i++){
+for(var i=1; i<10;i++){
   let element = '#inE'+i;
   updateDaten[i]= $(element).val();
 } 

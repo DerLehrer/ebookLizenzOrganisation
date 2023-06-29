@@ -59,9 +59,9 @@ exit;
 //Einstellungsdaten aendern
 
 else if($tabelle=='einstellungen'){
-$abfrage = "UPDATE schuldaten SET Schulname = ?, Direktor = ?, Strasse = ?, PLZ = ?, Ort = ?, Admin = ?, Email = ?, Einladung = ? ";
+$abfrage = "UPDATE schuldaten SET Sperre = ?, Schulname = ?, Direktor = ?, Strasse = ?, PLZ = ?, Ort = ?, Admin = ?, Email = ?, Einladung = ? ";
 $stmt = $Datenbank->prepare($abfrage);
-$stmt->bind_param("sssissss",$auswahl[1],$auswahl[2],$auswahl[3],$auswahl[4],$auswahl[5],$auswahl[6],$auswahl[7],$auswahl[8]);
+$stmt->bind_param("ssssissss",$auswahl[1],$auswahl[2],$auswahl[3],$auswahl[4],$auswahl[5],$auswahl[6],$auswahl[7],$auswahl[8],$auswahl[9]);
 $stmt->execute();
 echo json_encode(1);
 exit;

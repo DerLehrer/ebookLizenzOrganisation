@@ -8,7 +8,7 @@ if ( isset($_SESSION["benutzer"]) && time() < $_SESSION["ablaufzeit"]) {
 setlocale(LC_ALL,"de_DE.UTF8");
 
 //ergaenze zustaendigen Ansprechpartner
-$query = "SELECT Admin, Email FROM schuldaten;";
+$query = "SELECT Sperre, Admin, Email FROM schuldaten;";
 
 $abfrageergebnis = mysqli_query($Datenbank,$query);		
 	

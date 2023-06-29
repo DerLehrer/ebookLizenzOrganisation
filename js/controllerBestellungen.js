@@ -1,7 +1,8 @@
 $(document).ready(function() {
     var zustaendig =""
-    loadtable();
+    var sperrdatum = null;
     getZustaendigen();
+    loadtable();
       /*        ö = \u00F6  Ö  = \u00D6 
                 ä = \u00E4  Ä  = \u00C4
                 ü = \u00FC  Ü  = \u00DC
@@ -19,6 +20,7 @@ function loadtable(){
     url: "../php/getMeineBestellungen.php",
     dataType : "json",
     success: function( data ) {
+     
       let kosten = 0.00;
       str = '<table id="seitentabelle" class="table" style="width:100%"><thead><tr><th>Auswahl</th><th>Buch</th><th>Jahrgangsstufe</th><th>Fach</th><th>Verlag</th><th>Preis</th><th>Ihr Code</th></tr></thead><tbody>';
        $.each(data, function (index, value) {
@@ -29,9 +31,18 @@ function loadtable(){
        })
        str = str + '</tbody></table>';
        $('#output').html(str);
-       $('#hinweise').html("Sie haben ebooks im Wert von "+kosten+" Euro bestellt.<p>");
-      
-    }
+       let hinw = "";
+       if(sperrdatum != null && sperrdatum != "0000-00-00"){
+        let jahr = sperrdatum.substring(0,4);
+        let monat = sperrdatum.substring(5,7);
+        let tag = sperrdatum.substring(8,10);
+       hinw += "<div style='color:red; font-weight:bold'>Bestellfrist bis "+tag+"."+monat+"."+jahr+"<br></div>";
+       }
+       hinw += "<div style='color:#007bff; font-weight:normal'>Sie haben ebooks im Wert von "+kosten+" Euro bestellt.</div><p>";
+ 
+       $('#hinweise').html(hinw);
+    
+  }
   })
 
 /////////////// DataTable-Einstellungen ////////////////////////
@@ -144,6 +155,7 @@ function getZustaendigen(){
       $.each(data, function (index, value) {
         mail = value.Email;
         person = value.Admin;
+        sperrdatum = value.Sperre;
       })
        $('#ansprechpartner').html("Ansprechpartner: "+person);     
        zustaendig = mail;
@@ -203,7 +215,11 @@ function bestellen() {
               cache: false,
               dataType : "json",
               success: function( data ) {
-                if(data == 0){
+                if(data == "abgelaufen"){
+                  alert("Die Bestellfrist ist bereits abgelaufen.");
+                }
+              
+                if(data == 0 || data == "abgelaufen"){
                 table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
                 table.buttons( 1, null ).remove();
                 loadtable();
@@ -211,7 +227,8 @@ function bestellen() {
                 else{
                   alert("Es ist ein Fehler aufgetreten.\nBitte beachten Sie, dass Sie bereits erhaltene Codes nicht mehr abbestellen k\u00F6nnen.\n Bitte wiederholen Sie Ihre Bestellung, wenn Sie m\u00F6gliche \u00C4nderungen vornehmen m\u00F6chten.");
                 }
-              }
+            
+            }
               })
               $( this ).dialog( "close" );  
               }

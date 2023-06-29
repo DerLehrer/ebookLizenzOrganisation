@@ -15,7 +15,7 @@ $query = "SELECT bestellung.BestellerID, bestellung.BuchID, bestellung.Datum, co
 }
 */
 
-$query="SELECT Schulname, Direktor, Strasse, PLZ, Ort, Admin, Email, Einladung FROM schuldaten";
+$query="SELECT Sperre, Schulname, Direktor, Strasse, PLZ, Ort, Admin, Email, Einladung FROM schuldaten";
 
 $abfrage = $Datenbank->query($query);
 

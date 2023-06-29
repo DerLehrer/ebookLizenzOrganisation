@@ -47,6 +47,7 @@ setlocale(LC_ALL, "de_DE.UTF8");
                     <tr>
                         <td class="zentriertesTab">
                             <div id="hinweise" style="font-size:small">&nbsp;</div>
+
                         </td>
                     </tr>
                     <tr>
