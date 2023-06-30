@@ -37,7 +37,7 @@ if ($aufrufvariable == "einladung") {
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
        
         $text = "<html>".$einladungstext.
-        "<a href='https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo'>
+        "<a href='https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo&ePw=$otpw'>
         https://ebooks.gmg-info.de/Registrierung.php?name=$sendItTo&ePw=$otpw
         </a><br>
         Mit freundlichen Grüßen,<br>

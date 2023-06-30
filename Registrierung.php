@@ -7,8 +7,8 @@ setlocale(LC_ALL, "de_DE.UTF8");
 
 $anmelder = "";
 $ePw = "";
-if ($_GET) {
-    $anmelder = htmlspecialchars($_GET["name"]);
+if(array_key_exists("ePw", $_GET) && array_key_exists("name", $_GET)){
+    $anmelder = ($_GET["name"]);
     $ePw = $_GET["ePw"];
 
 } /* name wird nur genutzt, wenn auch etwas übergeben wurde */

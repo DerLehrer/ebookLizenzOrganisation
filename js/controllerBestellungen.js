@@ -56,7 +56,7 @@ setTimeout(function() {
   columnDefs: [ {  orderable: true,
                    className: 'select-checkbox',
                    targets:   0    } ],
-  order: [[ 1, 'asc' ]],
+  order: [[ 2, 'asc' ]],
   autoWidth: true,
   paging: false,
   searching: true,
