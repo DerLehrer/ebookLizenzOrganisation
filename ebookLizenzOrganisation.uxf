@@ -122,7 +122,7 @@ customelement=
 drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>462</x><y>480</y><w>90</w><h>18</h></coordinates><panel_attributes>//right rectangle with double dashed border
-sendmail
+einladen
 customelement=
 drawRectangleRound(0,0,150,30,5) fg=black bg=cyan lt=:
 
