@@ -25,8 +25,8 @@ setup for use:
   dbusername = "yourdatabaseusername"<br>
   dbpassword = "yourdatabasepassword"<br>
   dbport =3306<br>
-- in the database change the existing entry of table "benutzer": enter your email-adress (with phpMyAdmin for example)
-- open the website to register as Admin using yourdomain/Registrierung.php?name=youremailadress (for example: localhost/Registrierung.php?name=mymail@gmx.de)<br>
+- in the database change the existing entry of table "benutzer": enter your email-adress and add "1" to RenewPW (with phpMyAdmin for example)
+- open the website to register as Admin using yourdomain/Registrierung.php?name=youremailadress&ePw=1 (for example: localhost/Registrierung.php?name=mymail@gmx.de&ePw=1)<br>
   You have to use "Verwalter" as admin-login (!), choose your own password.<br>
 - Now you are ready to go!<br>
 - read Anleitung.docx to get started using the website (at the moment in German only)
