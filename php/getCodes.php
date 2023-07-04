@@ -8,8 +8,8 @@ if($_SESSION["benutzer"]=="Verwalter"){
 setlocale(LC_ALL,"de_DE.UTF8");
 
 
-$queryeins = "SELECT buch.Buch AS BuchT, Codes, BestellerId, IF(BestellerId IS NULL,0, 1) AS Anzahl_verwendungen, Anzahl_max FROM buch, codes left outer join bestellung on codes.Codes = bestellung.Code WHERE buch.Buch = codes.BuchID AND Anzahl_max < 2 ";
-$queryzwei = "SELECT buch.Buch AS BuchT, Codes, 'geteilt' BestellerId, suba.Verwendungen AS Anzahl_verwendungen, Anzahl_max FROM codes , buch, (SELECT COUNT(*) AS Verwendungen, Code FROM bestellung GROUP BY Code) AS suba WHERE Anzahl_max > 1 AND buch.Buch = codes.BuchID AND suba.Code = codes.Codes";
+$queryeins = "SELECT suba.BuchT, suba.Codes,  subb.BestellerId, IF(subb.BestellerId IS NULL,0, 1) AS Anzahl_verwendungen, suba.Anzahl_max FROM (SELECT buch.Buch AS BuchT, Codes, Anzahl_max FROM buch, codes WHERE buch.Buch = codes.BuchID AND Anzahl_max < 2) as suba left outer join (SELECT Code, BestellerId FROM bestellung) as subb on suba.Codes = subb.Code ";
+$queryzwei = "SELECT subc.BuchT, subc.Codes,  subd.BestellerId, IF(subd.BestellerId IS NULL,0,subd.Verwendungen) AS Anzahl_verwendungen, subc.Anzahl_max FROM (SELECT buch.Buch AS BuchT, Codes, Anzahl_max FROM buch, codes WHERE buch.Buch = codes.BuchID and Anzahl_max >1) as subc left outer join (SELECT COUNT(*) AS Verwendungen, 'geteilt' BestellerId, Code FROM bestellung GROUP BY Code) AS subd on subc.Codes = subd.Code";
 $query = $queryeins . " UNION " . $queryzwei;
 
 	$abfrageergebnis = mysqli_query($Datenbank,$query);		
