@@ -72,7 +72,7 @@ setlocale(LC_ALL, "de_DE.UTF8");
                             <div id="buttonleiste2"  style="float: right; margin-right: 0px;"></div>
                      <tr>
                         <td class="zentriertesTab">
-                             <div id="output">&nbsp;</div>
+                             <div id="output"><table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Email-Adresse</th><th>Sch&uuml;ler</th><th>Klasse</th><th>eingeladen</th><th>hat sich registriert</th><th>Bestellkosten</th></tr></thead><tbody></tbody></table></div>
                         </td>
                     </tr>    
                         </td>

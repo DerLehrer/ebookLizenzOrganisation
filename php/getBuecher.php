@@ -10,7 +10,7 @@ setlocale(LC_ALL,"de_DE.UTF8");
 $queryzwei = "SELECT buch.Buch, buch.Stufe, buch.Fach, buch.Verlag, buch.Preis, suba.Bestellungen, subb.Codes 
 				FROM buch left outer join (SELECT Count(BestellerId) AS Bestellungen, BuchId FROM bestellung GROUP BY BuchId) AS suba
 				on buch.Buch = suba.BuchId
-				left outer join  (SELECT Count(Codes) AS Codes, Anzahl_max, Anzahl_verwendungen, BuchId FROM codes GROUP BY BuchId) AS subb
+				left outer join  (SELECT SUM(Anzahl_max) AS Codes, BuchId FROM codes GROUP BY BuchId) AS subb
 				on buch.Buch = subb.BuchId";
 			
 		
