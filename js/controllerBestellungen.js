@@ -47,7 +47,7 @@ function loadtable(){
       let jahr = sperrdatum.substring(0,4);
       let monat = sperrdatum.substring(5,7);
       let tag = sperrdatum.substring(8,10);
-     hinw += "<div style='color:red; font-weight:bold'>Bestellfrist bis "+tag+"."+monat+"."+jahr+"<br></div>";
+      hinw += "<div style='color:red; font-weight:bold'>Bestellungen m\u00FCssen VOR dem "+tag+"."+monat+"."+jahr+" erfolgen<br></div>";
      }
      hinw += "<div style='color:#007bff; font-weight:normal'>Sie haben ebooks im Wert von "+kosten+" Euro bestellt.</div><p>";
 
