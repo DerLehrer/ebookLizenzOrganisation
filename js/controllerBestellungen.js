@@ -86,15 +86,15 @@ language: {   lengthMenu: "Zeige _MENU_ Zeilen",
               searchPlaceholder: 'Suche',
               search: ""  },
               
-buttons: [    {   text: 'Alle Eintr\u00E4ge',
-                    action: function () {  table.rows().select(); } ,
-                    className: "btn btn-extra-blau"  },
+buttons: [     { text: 'Hilfe',  
+                 className: "btn btn-extra-blau primary-hilfe" , 
+                 action: function () {  window.open('../Hilfe.pdf'); }   },
               {   text: 'Bisher bestellt',
                   action: function () {  
                     loadtable();},
                   className: "btn btn-extra-blau" 
               }  ,
-              {   text: 'Keine Eintr\u00E4ge',
+              {   text: 'Auswahl leeren',
                     action: function () {  table.rows().deselect(); },   
                     className: "btn btn-extra-blau" 
               } 
@@ -144,12 +144,14 @@ $("#seitentabelle tbody").on('click', 'tr', function () {  $(this).toggleClass('
 
 //Zustaendigen laden
 function getZustaendigen(){
+
 let mail ="";
 let person = "";
 $.ajax({
   type: "GET",
   url: "../php/getZustaendigen.php",
   dataType : "json",
+  cache: false,
   success: function( data ) {
     $.each(data, function (index, value) {
       mail = value.Email;
@@ -160,6 +162,7 @@ $.ajax({
      zustaendig = mail;
   }
 })
+
 }
 
 //Mail an Admin

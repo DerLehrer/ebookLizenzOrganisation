@@ -82,6 +82,13 @@
   .btn-extra-blau.disabled,.btn-extra-blau:disabled{color:#fff;background-color: rgb(13 110 253 / 90%); border-color:#000}
 
 
+.primary-hilfe{
+ font-size:0.8em;
+    width: 120px;
+    color:white;
+    background-color: rgb(13 110 253 / 80%);
+    border-color: rgb(13 110 253 / 90%);
+}
 
 .primary-datatable{
 background-color: rgb(13 110 253 / 90%);
