@@ -20,19 +20,22 @@ setlocale(LC_ALL, "de_DE.UTF8");
         <link rel="stylesheet" href="../css/jquery-ui.css">
         <link rel="stylesheet" href="../css/jquery-ui.theme.css">
         <link rel="stylesheet" href="../css/jquery-ui.structure.css">
-        <link rel="stylesheet" href="../css/fontawesome/css/all.min.css" />
+        <link rel="stylesheet" href="../css/fontawesome/css/all.min.css">
         <link rel="stylesheet" href="../css/fontawesome/css/solid.css" >
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">  
         <link rel="stylesheet" href="../css/meineFormatierungenBlau.css">
+ 
     </head>
 
     <body>
     
-        <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+
+        <nav class="navbar bg-primary navbar-dark">
+        <div class="navbar-header">
             <a class="navbar-brand" href="abmelden.php" id="titel"><?php echo($_SESSION["benutzer"]); ?> abmelden</a>
-            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:schreibMail()"><div id="ansprechpartner"></div></a>
-            </li>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"> <a class="nav-link" href="javascript:schreibMail()"><div id="ansprechpartner"></div></a></li>
             </ul>
         </nav>
         <br>
@@ -52,16 +55,25 @@ setlocale(LC_ALL, "de_DE.UTF8");
                     </tr>
                     <tr>
                         <td>
-                            <div id="buttonleiste" style="float: left; width: 100%;"></div>
-                            <div style="float: none ;"></div>
-                            <div id="buttonleiste2" style="float: right; margin-right: 0px;"></div>
-                    <tr>
-                        <td class="zentriertesTab">
-                        <div id="output">&nbsp;</div>
+                            <div style="float: left; ">
+                                     <div id="buttonleiste" ></div>
+                                     <div id="buttonleiste3 "><input type="search" id="suche" class="form-control suche" placeholder="Suche"></div>
+                            </div>
+                            <div class="conditionalAlignment">
+                                       <div id="buttonleiste2" ></div> 
+                                       <div id="buttonleiste4"></div>
+                            </div>     
                         </td>
-                    </tr>
-                    </td>
-                    </tr>
+                     </tr>
+                </table>
+            </div>
+        </div>
+        
+       
+
+                   <div id="output"><table id="seitentabelle" class="table" style="width:90%"><thead><tr><th>Auswahl</th><th data-priority="11">Buch</th><th class="all">Jgst.</th><th class="all">Fach</th><th>Verlag</th><th class="all">Preis</th><th class="all">Ihr Code</th></tr></thead><tbody></tbody></table>
+                </div>
+                        <table>      
                     <tr>
                         <td class="zentriertesTab">
                             <div id="platzhalter" style="font-size:small">&nbsp;</div>
@@ -69,14 +81,14 @@ setlocale(LC_ALL, "de_DE.UTF8");
                     </tr>
                     <tr></tr>
                 </table>
-            </div>
-        </div>
-
+    
         <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="../datatables/datatables.js" defer></script>
         <script type="text/javascript" src="../js/jquery.dataTables.min.js" defer></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js" defer></script>
+    
         <script type="text/javascript" src="../js/dataTables.buttons.min.js" defer></script>
         <script type="text/javascript" src="../js/dataTables.select.min.js" defer></script>
         <script type="text/javascript" src="../js/moment.min.js" defer></script>

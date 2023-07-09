@@ -77,7 +77,7 @@ setlocale(LC_ALL, "de_DE.UTF8");
                      <tr>
                         <td class="zentriertesTab">
                             
-                             <div id="output">&nbsp;</div>
+                             <div id="output"><table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Besteller</th><th>Buch</th><th>Datum</th><th>Code</th></tr></thead><tbody></tbody></table></div>
                         </td>
                     </tr>    
                         </td>

@@ -21,7 +21,7 @@ if($tabelle=='buecher'){$tabellenname = 'buch'; $leerbleibendeSpalten = 0;}
 else if($tabelle=='nutzer'){$tabellenname = 'benutzer';  $leerbleibendeSpalten = 4;}    
 else if($tabelle=='codes'){
     $tabellenname = 'codes';  
-    $leerbleibendeSpalten = 2;
+    $leerbleibendeSpalten = 1;
     //nur Codes laden, wenn ein entsprechendes Buch vorhanden ist -> Buchliste ermitteln
     $quer ="SELECT Buch from buch";
     $qu = mysqli_query($Datenbank,$quer);
