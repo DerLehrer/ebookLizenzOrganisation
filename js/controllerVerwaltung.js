@@ -1,5 +1,8 @@
 $(document).ready(function() {
-    loadtable();
+  if($('#seitenid').text()!="einstellungen"){
+    makeDT()
+  };
+  loadtable();
       /*        ö = \u00F6  Ö  = \u00D6 
                 ä = \u00E4  Ä  = \u00C4
                 ü = \u00FC  Ü  = \u00DC
@@ -46,17 +49,21 @@ function loadtable(){
     url: "../php/getBuecher.php",
     dataType : "json",
     success: function( data ) {
-      str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>ID</th><th>Jahrgangsstufe</th><th>Fach</th><th>Verlag</th><th>Preis</th><th>Bestellungen</th><th>Codes</th></tr></thead><tbody>';
+      let tab = $("#seitentabelle").DataTable();
+      tab.clear();
        $.each(data, function (index, value) {
-        let anzahl = value.Codes;
+        let anzahl ="-";
+        let bestell ="-";
+        if(value.Codes!=null){anzahl = value.Codes};
+        if(value.Bestellungen!=null){bestell = value.Bestellungen};
         if(value.Anzahl_max > value.Codes){
           anzahl = value.Anzahl_max;
         }
-       //editierbare Felder müssen class = "editable" eingestellt werden
-       str = str + '<tr><td></td><td>'+value.Buch+'</td><td>'+value.Stufe+'</td><td>'+value.Fach+'</td><td>'+value.Verlag+'</td><td class = "editable">'+value.Preis+'</td><td>'+value.Bestellungen+'</td><td>'+anzahl+'</td>';
+       tab.row.add(["",value.Buch, value.Stufe, value.Fach,value.Verlag, value.Preis,bestell,anzahl]);
        })
-       str = str + '</tbody></table>';
-       $('#output').html(str);
+      //editierbare Felder müssen class = "editable" eingestellt werden
+       tab.column(5).nodes().to$().addClass("editable");
+       tab.draw();
    }
   })
   }
@@ -66,8 +73,9 @@ function loadtable(){
       url: "../php/getCodes.php",
       dataType : "json",
       success: function( data ) {
+        let tab = $("#seitentabelle").DataTable();
+        tab.clear();
         //Primärschlüsselspalte wird versteckt - ist aber inhaltlich zugänglich
-        str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Buch</th><th>Codes</th><th>Verwendung</th><th>Menge</th></tr></thead><tbody>';
          $.each(data, function (index, value) {
           let verwendung = "- nicht zugeordnet -";
           // für mehrfach zu verwendende Codes
@@ -78,11 +86,11 @@ function loadtable(){
           else if(value.BestellerId != null){
             verwendung = value.BestellerId;
           }
-          //editierbare Felder müssen class = "editable" eingestellt werden
-            str = str + '<tr><td></td><td>'+value.BuchT+'</td><td>'+value.Codes+'</td><td>'+verwendung+'</td><td class = "editable">'+value.Anzahl_max+'</td>';
-        })
-         str = str + '</tbody></table>';
-         $('#output').html(str);
+          tab.row.add(["",value.BuchT, value.Codes, verwendung,value.Anzahl_max]);
+        });
+       //editierbare Felder müssen class = "editable" eingestellt werden
+        tab.column(4).nodes().to$().addClass("editable");
+        tab.draw(); 
      } 
     })
   }
@@ -92,21 +100,25 @@ function loadtable(){
       url: "../php/getNutzer.php",
       dataType : "json",
       success: function( data ) {
+        let tab = $("#seitentabelle").DataTable();
+        tab.clear();
         let anzahl = 0;
         let eingeladene = 0;
-        str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Email-Adresse</th><th>Sch&uuml;ler</th><th>Klasse</th><th>eingeladen</th><th>hat sich registriert</th><th>Bestellkosten</th></tr></thead><tbody>';
          $.each(data, function (index, value) {
           let reg = "nicht registriert";
           let ein = "Nein";
           anzahl++;
           if(value.Gesetzt==1){reg="registriert"}
           if(value.Eingeladen==1){ein = "Ja"; eingeladene++;}
-          //editierbare Felder müssen class = "editable" eingestellt werden
-          str = str + '<tr><td></td><td name = "mail" class = "editable">'+value.Email+'</td><td name = "vorname" class="editable">'+value.SchuelerVname+' '+value.SchuelerNname+'</td><td id=3 class = "editable">'+value.Klasse+'</td><td id=4 class = "editable">'+ein+'</td><td id=5>'+reg+'</td><td id=6>'+value.Kosten+'</td>';
-         })
-         str = str + '</tbody></table>';
+          let nam = value.SchuelerVname+" "+value.SchuelerNname;
+         tab.row.add(["",value.Email, nam, value.Klasse,ein,reg,value.Kosten]);
+       })
+       //editierbare Felder müssen class = "editable" eingestellt werden
+       for(let i = 1; i<5;i++){
+       tab.column(i).nodes().to$().addClass("editable");
+       }
+       tab.draw();
          hinw = ''+eingeladene+' von ' +anzahl+ ' Nutzern wurden eingeladen<p>';
-         $('#output').html(str);
          $('#hinweise').html(hinw);
      } 
     })
@@ -117,14 +129,14 @@ function loadtable(){
       url: "../php/getBestellungen.php",
       dataType : "json",
       success: function( data ) {
-        str = '<table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>Besteller</th><th>Buch</th><th>Datum</th><th>Code</th></tr></thead><tbody>';
+        let tab = $("#seitentabelle").DataTable();
+        tab.clear();
         $.each(data, function (index, value) {
         let codestring = value.Code;
         if(value.Code == null){ codestring = "noch kein Code";  }
-        str = str + '<tr><td></td><td>'+value.BestellerID+'</td><td>'+value.BuchID+'</td><td>'+value.Datum+'</td></td><td>'+codestring+'</td>';
-       })
-        str = str + '</tbody></table>';
-         $('#output').html(str);
+       tab.row.add(["",value.BestellerID, value.BuchID, value.Datum,codestring]);
+      })
+      tab.draw();
      } 
     })
   }
@@ -146,15 +158,11 @@ function loadtable(){
     })
   }
   ;
-
+}
 
 /////////////// DataTable-Einstellungen ////////////////////////
 
-setTimeout(function() {
-  if($('#output').html()=="&nbsp;"){
-    $('#output').html("Fehler: Die Daten konnten nicht geladen werden.");
-  }
-  else{
+function makeDT() {
   var table = $("#seitentabelle").DataTable( {
   columnDefs: [ {  orderable: true,
                    className: 'select-checkbox',
@@ -246,7 +254,7 @@ setTimeout(function() {
     else if ($('#seitenid').text()=="bestellungen"){
       buttons3.push({   text: "Eintr\u00E4ge l\u00F6schen", action: function(){loeschen();},className: "btn btn-secondary" });
     }
-    }
+    
    
     new $.fn.dataTable.Buttons( table, {
       buttons: {
@@ -272,7 +280,7 @@ setTimeout(function() {
     if(table.cell(this,0).data()=="&nbsp;"){table.cell(this, 0).data("");}
     else{table.cell(this,0).data("&nbsp;");}
   });
-},200); }
+ }
 
 ///////////////////////////////////////////////////////////
 function einladen(){
@@ -308,8 +316,6 @@ function einladen(){
     }
     else{
       alert("Es wurden "+data+" Einladungs-Mails versandt. \nAus Spamschutzgr\u00FCnden k\u00F6nnen maximal 40 Mails auf einmal verschickt werden.");
-     table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-     table.buttons( 1, null ).remove();
      loadtable();  
     }
     }})
@@ -351,7 +357,6 @@ for(var i=1; i<10;i++){
   let element = '#inE'+i;
   updateDaten[i]= $(element).val();
 } 
-
   var jsonString = JSON.stringify(updateDaten);
           $.ajax({
             type: "POST",
@@ -405,8 +410,6 @@ function zuordnen() {
         }
         else{
     	    alert("Es wurden "+data[0]+" Codes erfolgreich zugeordnet.\n"+data[1]+" vorhandene Codes wurden noch nicht vergeben.\n"+data[2]+" Bestellungen haben noch keinen Code erhalten.");
-         table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-         table.buttons( 1, null ).remove();
          loadtable();  
         }
         }})
@@ -466,22 +469,16 @@ function hochladen(table) {
                             success: function( data ) {
                             if(data=="_8888_"){
                               $('#dateiInfo').html("<div style='color: red'>Eine Datei hat die falsche Anzahl an Spalten.<br>Als Trennzeichen muss ';' eingestellt sein.</div>");
-                              table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-                              table.buttons( 1, null ).remove();
                               loadtable();  
                             }
                             else if(data=="_7777_"){
                               $('#dateiInfo').html("<div style='color: red'>Die Datei muss in UTF-8-Codierung gespeichert sein.</div>");
-                              table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-                              table.buttons( 1, null ).remove();
                               loadtable();  
                             }
                             else{
         
                               $('#dateiInfo').html("Es wurden "+ data + " Einträge hinzugefügt");
                               $(':file').val('');
-                            table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-                            table.buttons( 1, null ).remove();
                             loadtable();  
                             }  
                           }
@@ -546,7 +543,7 @@ function hochladen(table) {
 
   // INLINE-AENDERUNGEN //////////////////////////////////////////////////////////////////////////////////////////////////////////////
   var clickedRow;                                                       //Global nötig, damit wiederholter Bezug darauf möglich (Ändern und Speichern)
-  var primSchl;
+  var primSchl;        //wozu???                                       
 
   function aendern(){
     var table = $("#seitentabelle").DataTable();   
@@ -558,11 +555,7 @@ function hochladen(table) {
       var zeilendaten = clickedRow.data();                          
       primSchl = zeilendaten[1];
       $(clickedRow.node()).find('td').each(function () {      
-      /*  if ($(this).hasClass('gross')) {
-          var html = fnCreateTextArea($(this).html(), "updatebox");    
-           $(this).html($(html))    
-     } 
-      else */ if ($(this).hasClass('editable')) {
+      if ($(this).hasClass('editable')) {
             var html = fnCreateTextBox($(this).html(), "updatebox");    
              $(this).html($(html))    
      }    
@@ -584,11 +577,6 @@ function hochladen(table) {
    updateDB(dat, primSchl);  
      }
 }
-
-/*  function fnCreateTextArea(value, fieldprop) {    
-return '<textarea data-field="' + fieldprop + '" type="text" cols="50" rows="6">' + value + '</textarea>';	
-}   */
-
 function fnCreateTextBox(value, fieldprop) {    
   return '<input data-field="' + fieldprop + '" type="text" value="' + value + '" size = "13"></input>';    
 }  
@@ -603,7 +591,7 @@ function fnUpdateDataTableValue($inputCell, value) {
 
 function updateDB(data, primSchl) {
   var seitenid = $('#seitenid').text();
-  var table = $("#seitentabelle").DataTable();
+ // var table = $("#seitentabelle").DataTable();
  // var data = table.rows( { selected: true } ).data();
   var updateDaten = [];
   updateDaten[0]=seitenid;
@@ -620,13 +608,20 @@ function updateDB(data, primSchl) {
               cache: false,
               dataType : "json",
               success: function( data ) {
-                table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-                table.buttons( 1, null ).remove();
+                if(data.key == "toolow"){;
+                   alert("Es wurden bereits "+data.anzahl+" dieser Codes zugeteilt!");
+                  }
+                  if(data.key == "alreadybooked"){;
+                    alert("Es wurden bereits B\u00FCcher zum vorherigen Preis bestellt!");
+                   }
                 loadtable();
-                },
-                error: function (data){alert("Ein Fehler ist aufgetreten.")}
-              })
+              },
+              error: function (data){
+                  alert("Ein Fehler ist aufgetreten.");
+                  loadtable();
               }
+              })
+             }
               else{
             }
         }
@@ -680,8 +675,6 @@ function zweiprimloeschen() {
               dataType : "json",
               success: function( data ) {
                 alert(data + " Eintr\u00E4ge wurden gel\u00F6scht.");
-                table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-                table.buttons( 1, null ).remove();
                 loadtable();
                 }
               })
@@ -738,8 +731,6 @@ function zweiprimloeschen() {
                 dataType : "json",
                 success: function( data ) {
                   alert(data + " Eintr\u00E4ge wurden gel\u00F6scht.");
-                  table.buttons( 0, null ).remove();  // nötig, da sonst durch loadtable() doppelt vorhanden
-                  table.buttons( 1, null ).remove();
                   loadtable();
                   }
                 })

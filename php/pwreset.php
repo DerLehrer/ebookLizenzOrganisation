@@ -50,6 +50,7 @@ $versandadresse = $constants['mailversandadresse'];
     $var_size = strlen($chars);
     for( $x = 0; $x < $laenge; $x++ ) {  
     $temporaeresPW= $temporaeresPW.$chars[ rand( 0, $var_size - 1 ) ];
+    $tempPW= urlencode($temporaeresPW);
     }
            
     /* Achtung: Anführungszeichen bei Variablen, die als Text eingehen sollen sind wichtig! */
@@ -62,9 +63,8 @@ $versandadresse = $constants['mailversandadresse'];
         $text = "<html>Diese Mail wurde von der Anmeldeseite zur Code-Bestellung für ebooks verschickt.<br>
         Innerhalb der nächsten 15 Minuten können Sie Ihr Passwort neu vergeben.<br>
         Bitte verwenden Sie dafür folgenden Link:<br>
-        <a href='
-        https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$temporaeresPW'>
-        https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$temporaeresPW
+        <a href='https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$tempPW'>
+        https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$tempPW
         </a><br>
         <br>
         Sollten Sie die Passwortzurücksetzung nicht angefordert haben, so können Sie diese Mail ignorieren. <br>
@@ -103,3 +103,4 @@ if(!$mail->Send()) {
   else{echo json_encode("0");}
 } 
 ?>
+	

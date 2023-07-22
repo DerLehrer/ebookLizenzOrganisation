@@ -32,7 +32,7 @@ if ($aufrufvariable == "einladung") {
     while ($zaehler <= 40 && $datensatz = $abf->fetch_assoc()) {
         if($datensatz['Eingeladen'] == 0){
         $sendItTo = $datensatz['Email'];
-        $otpw = $datensatz['RenewPW'];
+        $otpw =  urlencode($datensatz['RenewPW']);                                //urlencode erlaubt Sonderzeichen in URL -> wird von $_GET automatisch decodiert
         $betreff = $schulname . ": Registrierung zur Code-Bestellung für ebooks";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
        

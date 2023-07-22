@@ -16,9 +16,13 @@ $alleBuecher = $Datenbank->query("SELECT Buch FROM buch");
     if ($alleBuecher->num_rows > 0) {
         while ($row = $alleBuecher->fetch_object()) {
             $r = $row->Buch;
-            $buchCodes = $Datenbank->query("SELECT Codes, Anzahl_max - Anzahl_verwendungen AS verfuegbareAnzahl FROM codes WHERE BuchID = '".$r."' AND Anzahl_verwendungen<Anzahl_max ");
+            //Codes pro Buch und wieviele von diesen noch frei sind
+            $buchCodes = $Datenbank->query("SELECT Codes, (anzahl - if(vergeben IS NULL, 0, vergeben)) as verfuegbareAnzahl FROM (SELECT Codes, SUM(Anzahl_max) as anzahl FROM codes WHERE BuchID='".$r."' GROUP BY Codes) AS suba LEFT OUTER JOIN (SELECT Code, COUNT(*) AS vergeben FROM bestellung WHERE BuchId='".$r."' GROUP BY Code) AS subb ON suba.Codes = subb.Code;");
             $buchBestellungen = $Datenbank->query("SELECT BestellerID FROM bestellung WHERE BuchID =  '".$r."' AND Code IS NULL;");
-            $anzahlCodes = $buchCodes->num_rows;
+            $anzahlCodes = 0;
+            if ($buchCodes !== false && $buchCodes->num_rows > 0) {
+                $anzahlCodes = $buchCodes->num_rows;
+                }
             $anzahlVergebbarerCodes = 0;
             $alleCodeObjekte = array();
             // ermittle Gesamtzahl der fuer ein Buch verfuegbaren Codes
@@ -28,7 +32,10 @@ $alleBuecher = $Datenbank->query("SELECT Buch FROM buch");
                 $anzahlVergebbarerCodes = $anzahlVergebbarerCodes+$vA;
             }
             // ermittle Gesamtzahl nicht bedienter Bestellungen fuer das Buch
-            $anzahlBestellungen = $buchBestellungen->num_rows;
+            $anzahlBestellungen = 0;
+            if($buchBestellungen !== false){
+                $anzahlBestellungen = $buchBestellungen->num_rows;
+            }
             
             // wenn mehr oder gleich viele Codes wie Bestellungen vorliegen, ordne der Liste aller Bestellungen einen Code zu und schreibe dies in bestellungen - ist die Liste der Bestellungen groesser, ordne der Liste der Codes jeweils einen Besteller zu und speichere das in bestellungen
             if ($anzahlVergebbarerCodes >= $anzahlBestellungen && $anzahlVergebbarerCodes > 0) {
@@ -40,7 +47,6 @@ $alleBuecher = $Datenbank->query("SELECT Buch FROM buch");
                         $bID = $buchBestellungen->fetch_object()->BestellerID;  //kein Iterator fuer Bestellungen noetig! Immer den naechsten Datensatz verwenden :-)
                         $CodeDiesesObjekts = $alleCodeObjekte[$i]->Codes;
                         $Datenbank->query("UPDATE bestellung SET Code = '".$CodeDiesesObjekts."' WHERE BuchId = '".$r."' AND BestellerID = '".$bID."';");
-                        $Datenbank->query("UPDATE codes SET Anzahl_verwendungen = Anzahl_verwendungen+1 WHERE Codes = '".$CodeDiesesObjekts."';");
                         $anzahlDiesesObjekts--;
                         $anzahlBestellungen--;
                         $erfolgreicheZuordnungen++;
@@ -56,7 +62,6 @@ $alleBuecher = $Datenbank->query("SELECT Buch FROM buch");
                          $bID = $buchBestellungen->fetch_object()->BestellerID;  //kein Iterator fuer Bestellungen noetig! Immer den naechsten Datensatz verwenden :-)
                          $CodeDiesesObjekts = $alleCodeObjekte[$i]->Codes;
                          $Datenbank->query("UPDATE bestellung SET Code = '".$CodeDiesesObjekts."' WHERE BuchId = '".$r."' AND BestellerID = '".$bID."';");
-                         $Datenbank->query("UPDATE codes SET Anzahl_verwendungen = Anzahl_verwendungen+1 WHERE Codes = '".$CodeDiesesObjekts."';");
                          $anzahlDiesesObjekts--;
                          $anzahlBestellungen--;
                          $erfolgreicheZuordnungen++;
@@ -67,7 +72,7 @@ $alleBuecher = $Datenbank->query("SELECT Buch FROM buch");
             
         }
 
-        $returnwert = [$erfolgreicheZuordnungen, $anzahlVergebbarerCodes, $verbleibendeBestellungen];
+        $returnwert = [$erfolgreicheZuordnungen, $uebrigeCodes, $verbleibendeBestellungen];
         echo json_encode($returnwert);
     }
     else{

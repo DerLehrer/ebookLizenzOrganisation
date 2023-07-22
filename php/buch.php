@@ -77,7 +77,7 @@ setlocale(LC_ALL, "de_DE.UTF8");
                      <tr>
                         <td class="zentriertesTab">
                             
-                             <div id="output">&nbsp;</div>
+                             <div id="output"><table id="seitentabelle" class="table "  style="width:100%"><thead><tr><th></th><th>ID</th><th>Jahrgangsstufe</th><th>Fach</th><th>Verlag</th><th>Preis</th><th>Bestellungen</th><th>Codes</th></tr></thead><tbody></tbody></table></div>
                         </td>
                     </tr>    
                         </td>
@@ -110,7 +110,7 @@ setlocale(LC_ALL, "de_DE.UTF8");
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" defer></script>
             <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js" defer></script>
             <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js" defer></script>
-            <script src="../js/jquery-ui.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
             <script type="text/javascript" src="../js/controllerVerwaltung.js"></script>
 
