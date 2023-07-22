@@ -16,24 +16,6 @@ body {
   }
 }
 
-/* links */
-a:link {
-  font-style: text-decoration: underline;
-  color: black;
-}
-
-a:visited {
-  color: black;
-}
-
-a:hover {
-  color: rgb(220 53 69 / 40%);
-}
-
-a:active {
-  color: rgb(220 53 69 / 40%);
-}
-
 .zentriert {
   display: flex;
   justify-content: center;
@@ -51,7 +33,7 @@ a:active {
 }
 .zentriertesTab {
   text-align: center;
-  width: 95%;
+  width: 90%;
   vertical-align: top;
 }
 .suche{
@@ -141,13 +123,13 @@ a:active {
 .primary-datatable{
 background-color: rgb(13 110 253 / 90%);
  font-size:0.8em;
-    width: 164px;
+    width: 120px;
     margin-bottom: 2px;
      border-color: rgba(4, 38, 89, 0.9);
 }
 
 .breit {
-    width: 328px;
+    width: 239px;
 }
 
 
@@ -168,12 +150,6 @@ float: right !important;
 margin-right:3px;
 }
 
-
-.dtr-control{
-	padding: 8px 2px !important;
-}
-
-
 table.dataTable > tbody {
   padding: 3%;
 }
@@ -181,10 +157,6 @@ table.dataTable > tbody {
 table.dataTable > thead > tr > th{
 text-align:center;
 padding-left:25px;
-}
-
-table.dataTable {
-font-size:0.9em;
 }
 
 table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
@@ -235,6 +207,8 @@ li.dt-button.active a:focus{
 	background-color: transparent;
 	font-weight: bold;
 }
+
+
 
 
 

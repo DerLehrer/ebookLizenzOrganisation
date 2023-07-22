@@ -83,7 +83,6 @@ if($anzl > $auswahl[5]){
 $werte = ["key" => "toolow", "anzahl" => $anzl];
 echo json_encode($werte);
 exit;
-
 }
 else{
 $abfrage = "UPDATE codes SET Anzahl_max = ?  WHERE Codes = ? AND BuchId = ?";
