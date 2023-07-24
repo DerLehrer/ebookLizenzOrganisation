@@ -108,8 +108,8 @@ setlocale(LC_ALL, "de_DE.UTF8");
                     <th></th>
                     <th></th>
                     <tr>
-                        <td style="vertical-align: bottom;">
-                         <div style="background-color: white; border:0px"><i class="fa-solid fa-triangle-exclamation fa-2xl" style="float:left; color:orange; margin:12px 12px 20px 0;"></i></div>
+                        <td style="vertical-align: center;">
+                         <div style="background-color: white; border:0px"><i class="fa-solid fa-triangle-exclamation fa-2xl" style="float:left; color:rgb(220 53 69 / 90%); margin:12px 12px 20px 0;"></i></div>
                         </td>
                         <td>Wollen Sie die ausgew&auml;hlten E-Book-Codes wirklich bestellen?<br>
                            <b> Hierf&uuml;r fallen Kosten in H&ouml;he von <div id="Kosten"  style="display: inline;">&nbsp;</div> an!</b><br>
