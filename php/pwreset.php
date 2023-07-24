@@ -28,7 +28,7 @@ $versandadresse = $constants['mailversandadresse'];
 
 /* Erstelle ein Einmalpasswort und ergänze dies beim Nutzer*/
 
-    $stmt = $Datenbank->prepare("SELECT Email, Gesetzt, addTime(TIME(NOW())-Renew, '$Sperrzeit') FROM benutzer WHERE (Name LIKE ? OR Email LIKE ?) AND Gesetzt > 0");
+    $stmt = $Datenbank->prepare("SELECT Email, Gesetzt,   timestampdiff(minute,  addtime(Renew, '$Sperrzeit'), now()) as zeitseitsperrfristende FROM benutzer WHERE (Name LIKE ? OR Email LIKE ?) AND Gesetzt > 0");
     $stmt->bind_param("ss", $lN, $lN);
     $stmt->execute();
     $res = $stmt->get_result();
@@ -39,7 +39,7 @@ $versandadresse = $constants['mailversandadresse'];
         $sperrstempel = $datensatz[2];
     }
 
-    if($res->num_rows == 1 && ($spamschutz < 4 || $sperrstempel > 0 )){        //Entweder wenige gescheiterte Versuche oder Wartezeit erfolgt
+    if($res->num_rows == 1 && ($spamschutz < 4 || $sperrstempel > 0 )){        //Entweder wenige gescheiterte Versuche oder Wartezeit erfolgt (Sperrstempel ist negativ, bis abgelaufen)
     
     if($sperrstempel > 0 && $spamschutz > 3){$spamschutz = 0;}                 //Nach Wartezeit wird Gesetzt wieder auf 1 reduziert
 
@@ -55,7 +55,7 @@ $versandadresse = $constants['mailversandadresse'];
            
     /* Achtung: Anführungszeichen bei Variablen, die als Text eingehen sollen sind wichtig! */
               
-       $Datenbank->query("Update benutzer set RenewPW = '$temporaeresPW', Renew = addTime(Time(Now()), '$Resetzeit'), Gesetzt = $spamschutz+ 1 WHERE Email like '$sendItTo';");
+       $Datenbank->query("Update benutzer set RenewPW = '$temporaeresPW', Renew = addTime(Now(), '$Resetzeit'), Gesetzt = $spamschutz+ 1 WHERE Email like '$sendItTo';");
 
         $betreff =  $schulname . ": Rücksetzung ihres Passworts";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";

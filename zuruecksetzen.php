@@ -11,7 +11,7 @@ if ($_GET) {
 
 } /* name wird nur genutzt, wenn auch etwas übergeben wurde */
 
-$stmt = $Datenbank->prepare("SELECT Email FROM benutzer WHERE Email LIKE ? AND Gesetzt > 0 AND Renew-TIME(NOW())> 0;");
+$stmt = $Datenbank->prepare("SELECT Email FROM benutzer WHERE Email LIKE ? AND Gesetzt > 0 AND  timestampdiff(minute,  Renew, now())> 0;");
 
 $stmt->bind_param("s", $anmelder);
 $stmt->execute();
