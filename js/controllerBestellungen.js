@@ -87,6 +87,7 @@ var table = $("#seitentabelle").DataTable( {
   select: {
             info: true,
             style: 'multi+shift',
+	    selector: 'tr td:not(:first-child)'
           },
   language: {   lengthMenu: "Zeige _MENU_ Zeilen",
                 zeroRecords: "Keine Eintr\u00E4ge gefunden",
