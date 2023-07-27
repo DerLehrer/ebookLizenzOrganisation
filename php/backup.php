@@ -13,13 +13,11 @@ $backupname = date("Y_m_d");
 $backupdir = '..'.DS.'backups';
 $backup =  $backupdir.DS.$backupname.'.sql';
 
-$mysqlDir = '..'.DS.'..'.DS.'..'.DS.'mysql'.DS.'bin';     // Paste your mysql directory here and be happy
+$mysqlDir = '..'.DS.'..'.DS.'..'.DS.'..'.DS.'usr'.DS.'bin';     // Paste your mysql directory here and be happy
 $mysqldump = $mysqlDir.DS.'mysqldump'; 
 
 
-exec("{$mysqldump} --user={$username_Datenbank} --password={$password_Datenbank} --host={$hostname_Datenbank} {$database_Datenbank} --result-file={$backup} 2>&1", $output);
-
-//var_dump($output);
+exec("{$mysqldump} --user={$username_Datenbank} --password={$password_Datenbank} --host={$hostname_Datenbank} {$database_Datenbank} --result-file={$backup} 2>&1", $output, $result);
 
 echo json_encode($backupdir);
 }}
