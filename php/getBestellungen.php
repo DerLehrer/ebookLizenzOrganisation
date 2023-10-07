@@ -7,7 +7,7 @@ if ( isset($_SESSION["benutzer"]) && time() < $_SESSION["ablaufzeit"]) {
 if($_SESSION["benutzer"]=="Verwalter"){
 setlocale(LC_ALL,"de_DE.UTF8");
 
-$query = "SELECT BestellerID, BuchID, Datum, Code FROM bestellung";
+$query = "SELECT BestellerID, BuchID, Date(Datum) AS Datum, Code FROM bestellung";
 
 	$abfrageergebnis = $Datenbank->query($query);
 	$arr = array();

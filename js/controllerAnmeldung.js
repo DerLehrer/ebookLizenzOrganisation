@@ -69,7 +69,7 @@ $(document).ready(function() {
       $("#Datenschutz").click(function(){
         var ziel = "../datenschutzerklaerung_i.html";
         if($("#seitenid").text()=="anmeldung"){
-            ziel = "../datenschutzerklaerung_i.html";
+            ziel = "../datenschutzerklaerung_b.html";
         }    
             window.location.assign(ziel);})
 })
@@ -138,13 +138,14 @@ function checkBenutzername() {
 //////Registrieren //////
 
 function hashIt(){
-        checkBenutzername();
+       checkBenutzername();
         checkPasswordStrength();
         if($("#pwOK").text()==1 && $("#loginOK").text()==1){
             if($("#annahme").prop("checked")!=true){
                 $("#zustimmungstext").css('color', 'red');
             }
         else{
+                  
         $.ajax({
         type: "POST",
         url: "php/registrieren.php",
@@ -201,4 +202,4 @@ function setNeu(){
 }
 
 
- 
+ 	

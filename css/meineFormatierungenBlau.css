@@ -1,3 +1,21 @@
+body {
+  table-layout: fixed;
+}
+
+/*conditional Alignments*/
+
+@media (min-width: 681px) {
+  .conditionalAlignment {
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .conditionalAlignment {
+    float:left;
+  }
+}
+
 .zentriert {
   display: flex;
   justify-content: center;
@@ -13,12 +31,22 @@
   align-items: top;
   border: 0px solid blue;
 }
-
 .zentriertesTab {
   text-align: center;
-  width:90%;
+  width: 90%;
   vertical-align: top;
 }
+.suche{
+    width: 328px;
+    text-align:center;
+    font-size: 0.8em;
+    margin-bottom:4px;
+}
+
+.table td {
+  text-align:center;
+}
+
 
 .fastzentriert {
   display: flex;
@@ -60,7 +88,8 @@
     background-color: rgb(13 110 253 / 10%);
     border-color: rgb(13 110 253 / 90%);
     margin: 0px;
-    width:120px;
+    margin-bottom: 2px;
+    width:110px;
 }
 .btn-extra-blau:hover
 {
@@ -82,16 +111,25 @@
   .btn-extra-blau.disabled,.btn-extra-blau:disabled{color:#fff;background-color: rgb(13 110 253 / 90%); border-color:#000}
 
 
+.hilfe{
+    font-size:0.8em;
+    color: black;
+    width: 110px;
+    margin-bottom: 2px;
+    background-color: rgb(220 53 69 / 40%);
+    border-color: rgb(13 110 253 / 90%);
+}
 
 .primary-datatable{
 background-color: rgb(13 110 253 / 90%);
  font-size:0.8em;
-    width: 140px;
+    width: 120px;
+    margin-bottom: 2px;
      border-color: rgba(4, 38, 89, 0.9);
 }
 
 .breit {
-    width: 280px;
+    width: 239px;
 }
 
 
@@ -150,20 +188,6 @@ table.dataTable.table-hover > tbody > tr.selected:hover > * {
 }
 
 
-
-
-.dataTables_filter {
-   text-align: left !important;
-   float: left !important;
-   width: 100%;
-}
-div.dataTables_wrapper div.dataTables_filter input {
-      width: 358px;
-	text-align:center;
-}
-input::placeholder {
-    font-size: 0.8em;;
-}
 
 
 
@@ -236,7 +260,7 @@ background-color: white;
 }
 
 .warnend .ui-widget-header {
-  background:#ffc107;
+  background:rgb(220 53 69 / 90%);
 color: black
 }
 
@@ -247,7 +271,7 @@ color: white;
 
 .btn-warnend:hover, .btn-warnend:active{
 background-color: white;
-background-color: #ffc107;
+background-color: rgb(220 53 69 / 90%);
 font-weight: bold;
 }
 

@@ -3,7 +3,7 @@ require_once("session.php");
 $const = parse_ini_file("infodat.ini");
 $farbe = "<nav class='navbar navbar-expand-lg bg-primary navbar-dark'>";
 $link ="<a href='../Anmeldung.html' >Neu anmelden";
-if(isset($_SESSION["benutzer"])){
+if(isset($_SESSION["benutzer"]) && $_SESSION["benutzer"]=="Verwalter"){
     $farbe="<nav class='navbar navbar-expand-lg bg-success navbar-dark'>";
     $link="<a href='../Anmeldung.html' style='color:#28a745'>Neu anmelden";
 };
