@@ -153,7 +153,8 @@ function hashIt(){
                 pW: $("#Passwort").val(),
                 //pW: hashWert,
                 eM: $("#anmelder").text(),
-                otpw: $("#ePw").text()
+                otpw: $("#ePw").text(),
+            
         },
         dataType: "json",
         success: function(data) {

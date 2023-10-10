@@ -39,7 +39,7 @@ $versandadresse = $constants['mailversandadresse'];
         $sperrstempel = $datensatz[2];
     }
 
-    if($res->num_rows == 1 && ($spamschutz < 4 || $sperrstempel > 0 )){        //Entweder wenige gescheiterte Versuche oder Wartezeit erfolgt
+    if($res->num_rows == 1 && ($spamschutz < 4 || $sperrstempel > 0 )){        //Entweder wenige gescheiterte Versuche oder Wartezeit erfolgt (Sperrstempel ist negativ, bis abgelaufen)
     
     if($sperrstempel > 0 && $spamschutz > 3){$spamschutz = 0;}                 //Nach Wartezeit wird Gesetzt wieder auf 1 reduziert
 
