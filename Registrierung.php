@@ -40,6 +40,7 @@ if ($checkEmail->num_rows == 0) {
     </head>
 
     <body>
+
         <div class="container-fluid ">
             <div class="zentriert">
                 <table class="zentriertesTab" id="inhalte">

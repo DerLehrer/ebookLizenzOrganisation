@@ -28,7 +28,7 @@ $versandadresse = $constants['mailversandadresse'];
 
 /* Erstelle ein Einmalpasswort und ergänze dies beim Nutzer*/
 
-    $stmt = $Datenbank->prepare("SELECT Email, Gesetzt, addTime(TIME(NOW())-Renew, '$Sperrzeit') FROM benutzer WHERE (Name LIKE ? OR Email LIKE ?) AND Gesetzt > 0");
+    $stmt = $Datenbank->prepare("SELECT Email, Gesetzt,   timestampdiff(minute,  addtime(Renew, '$Sperrzeit'), now()) as zeitseitsperrfristende FROM benutzer WHERE (Name LIKE ? OR Email LIKE ?) AND Gesetzt > 0");
     $stmt->bind_param("ss", $lN, $lN);
     $stmt->execute();
     $res = $stmt->get_result();
@@ -50,11 +50,12 @@ $versandadresse = $constants['mailversandadresse'];
     $var_size = strlen($chars);
     for( $x = 0; $x < $laenge; $x++ ) {  
     $temporaeresPW= $temporaeresPW.$chars[ rand( 0, $var_size - 1 ) ];
+    $tempPW= urlencode($temporaeresPW);
     }
            
     /* Achtung: Anführungszeichen bei Variablen, die als Text eingehen sollen sind wichtig! */
               
-       $Datenbank->query("Update benutzer set RenewPW = '$temporaeresPW', Renew = addTime(Time(Now()), '$Resetzeit'), Gesetzt = $spamschutz+ 1 WHERE Email like '$sendItTo';");
+       $Datenbank->query("Update benutzer set RenewPW = '$temporaeresPW', Renew = addTime(Now(), '$Resetzeit'), Gesetzt = $spamschutz+ 1 WHERE Email like '$sendItTo';");
 
         $betreff =  $schulname . ": Rücksetzung ihres Passworts";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
@@ -62,9 +63,8 @@ $versandadresse = $constants['mailversandadresse'];
         $text = "<html>Diese Mail wurde von der Anmeldeseite zur Code-Bestellung für ebooks verschickt.<br>
         Innerhalb der nächsten 15 Minuten können Sie Ihr Passwort neu vergeben.<br>
         Bitte verwenden Sie dafür folgenden Link:<br>
-        <a href='
-        https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$temporaeresPW'>
-        https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$temporaeresPW
+        <a href='https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$tempPW'>
+        https://ebooks.gmg-info.de/zuruecksetzen.php?name=$sendItTo&ePw=$tempPW
         </a><br>
         <br>
         Sollten Sie die Passwortzurücksetzung nicht angefordert haben, so können Sie diese Mail ignorieren. <br>
@@ -103,3 +103,4 @@ if(!$mail->Send()) {
   else{echo json_encode("0");}
 } 
 ?>
+	

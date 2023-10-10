@@ -21,7 +21,7 @@ if($tabelle=='buecher'){$tabellenname = 'buch'; $leerbleibendeSpalten = 0;}
 else if($tabelle=='nutzer'){$tabellenname = 'benutzer';  $leerbleibendeSpalten = 4;}    
 else if($tabelle=='codes'){
     $tabellenname = 'codes';  
-    $leerbleibendeSpalten = 2;
+    $leerbleibendeSpalten = 1;
     //nur Codes laden, wenn ein entsprechendes Buch vorhanden ist -> Buchliste ermitteln
     $quer ="SELECT Buch from buch";
     $qu = mysqli_query($Datenbank,$quer);
@@ -96,7 +96,7 @@ for($i=1;$i < count($inhalt); $i++){                    // Beginne mit 1, da ers
    /*  if($tabellenname == "codes"){
         $abfr = "SELECT Id from buch WHERE Buch LIKE ? LIMIT 1";    //Limit 1 um Laufzeitfehler zu vermeiden - es sollte trotzdem jeden Titel nur einmal geben!
         $statm = $Datenbank->prepare($abfr);
-        $statm->bind_param("s",$arrZeile[0]);
+        $statm->bind_param("s",trim($arrZeile[0]));
         $statm->execute();
         if($res = $statm->get_result()->fetch_object()) {
               $neueID = $res->Id;
@@ -124,7 +124,7 @@ for($i=1;$i < count($inhalt); $i++){                    // Beginne mit 1, da ers
      $stmt->execute();
     }
 
-    if($tabellenname == "codes" && in_array($arrZeile[0], $bucharr)){       
+    if($tabellenname == "codes" && in_array(trim($arrZeile[0]), $bucharr)){       
     $query = "INSERT IGNORE INTO ".$tabellenname."($intospaltentext) VALUES ($fragezeichen);";
     $paramets = array();
     $position = 0;

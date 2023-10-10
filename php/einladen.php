@@ -28,11 +28,11 @@ $versandadresse = $constants['mailversandadresse'];
 $zaehler = 0;
 
 if ($aufrufvariable == "einladung") {
-    $abf = $Datenbank->query("SELECT Email, RenewPW, Eingeladen FROM benutzer WHERE Name NOT LIKE 'Verwalter' AND Gesetzt < 1");
-    while ($zaehler <= 40 && $datensatz = $abf->fetch_assoc()) {
+    $abf = $Datenbank->query("SELECT Email, RenewPW, Eingeladen FROM benutzer WHERE Name NOT LIKE 'Verwalter' AND Eingeladen = 0 AND Gesetzt < 1");
+    while ($zaehler < 40 && $datensatz = $abf->fetch_assoc()) {
         if($datensatz['Eingeladen'] == 0){
         $sendItTo = $datensatz['Email'];
-        $otpw = $datensatz['RenewPW'];
+ $otpw =  urlencode($datensatz['RenewPW']);                                //urlencode erlaubt Sonderzeichen in URL
         $betreff = $schulname . ": Registrierung zur Code-Bestellung für ebooks";
         $betreff = "=?utf-8?b?" . base64_encode($betreff) . "?=";
        
